@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">7.4 checksum.inc</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>checksum.inc implements two macros for calculating checksum (8bit
+and 16bit):</tt>
+<p><tt>&nbsp; CheckSum8(...)</tt>
+<br><tt>&nbsp; CheckSum16(...)</tt>
+<p><tt>Both macros return new name - 'CheckSumRet8'/'CheckSumRet16' that
+represents checksum:</tt>
+<pre><b><tt>&nbsp; .device p16c84
+
+&nbsp; .include &lt;p16c84.inc>
+
+&nbsp; .include &lt;checksum.inc></tt></b></pre>
+<b><tt>&nbsp;&nbsp; Check1 = 0x20</tt></b>
+<br><b><tt>&nbsp; start:</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CheckSum8(1,2,3,4,5)</tt></b>
+<br><b><tt>&nbsp;&nbsp; movlw CheckSumRet8</tt></b>
+<br><b><tt>&nbsp;&nbsp; movwf Check1</tt></b>
+<p><tt>Notice that this macro calculate checkum for constants not for value
+of file registers, so this two macros do not generate any code!</tt>
+<p><i><tt>Thans to Even S. F. for some ideas.</tt></i>
+<br><i><tt></tt></i>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas7-3.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas8-0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

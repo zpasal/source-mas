@@ -1,0 +1,65 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">5.7 .rep .endrep</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>Directives used for repetition:</tt>
+<pre><b><tt>&nbsp;&nbsp; .rep expression
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; code
+
+&nbsp;&nbsp; .endrep</tt></b></pre>
+<tt>.rep is not like 'while' in high-languages. .rep calculate expression,
+after this, repetitions goes "expression" times, so this is not what programmer
+means:</tt>
+<pre><b><tt>&nbsp; b = 20
+
+&nbsp; .rep b
+
+&nbsp;&nbsp;&nbsp;&nbsp; movlw b
+
+&nbsp;&nbsp;&nbsp;&nbsp; b = b - 2&nbsp;&nbsp; ; no effect for
+.rep
+
+&nbsp; .endrep</tt></b></pre>
+<tt>This loop will go 20 times, not 10 times!</tt>
+<p><b><tt>DO NOT WRITE CODE LIKE UPPER EXAMPLE. ON NEXT RELEASE OF MAS,
+UPPER VARIABLE 'b' WILL CHANGE REPETITION COUNT!!!!</tt></b>
+<br><b><tt></tt></b>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas5-6.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas5-8.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">4.4 2-PASS ASSEMBLY</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>Some things depend of 2PASS assembly. In first pass, mas do:</tt>
+<br>&nbsp;
+<ul>
+<li>
+<tt>find all labels and calculate offset (depend of .org directive)</tt></li>
+
+<li>
+<tt>include files (only if specify .include)</tt></li>
+
+<li>
+<tt>.org directive</tt></li>
+</ul>
+
+<p><br><tt>First pass produce temporal file. This file is text file which
+have extension .$$$. On most systems, temporally of test.a' is 'test.a.$$$'.
+If file already exist it will be overwritten! Temp file is same like start
+file, but there is no labels:</tt>
+<pre><b><tt>&nbsp; ; test.a&nbsp;&nbsp; ; test.a.$$$
+
+&nbsp;start:&nbsp;&nbsp;&nbsp;
+
+&nbsp; movlw 0x10&nbsp;&nbsp; movlw 0x10
+
+&nbsp; movwf 0x20&nbsp;&nbsp; movwf 0x20</tt></b></pre>
+<tt>If .include directive is used, temp file is longer than start file.
+If pass1 find .org directive, current-offset is evaluated to new value,
+and output to temp file is same line.</tt>
+<p><tt>All operands of instructions are expressions. So, operands can reference
+non-defined labels, but can not reference non-declared names whose type
+is other than L_LABEL.</tt>
+<br><tt></tt>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas4-3.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas5-0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

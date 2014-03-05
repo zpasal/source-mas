@@ -1,0 +1,394 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  p16c84.dev
+;
+;  Mas's device file for PIC16C84 microcontroller
+;  Copyright (C) 2004 Pasalic Zaharije
+;
+;  This files comes with ABSOLUTELY NO WARRANTY;
+;  for more details about device files and/or 
+;  Lisense see documentation.
+;
+;                        Last Revision: 29-07-2004
+;
+
+device = P16C84
+core = 14
+memory = 0x3FF
+inst = 37
+
+; ---- Instructions without operands ------
+
+clrwdt = ( opcode = 0x0064 )
+nop    = ( opcode = 0x0000 )
+retfie = ( opcode = 0x0009 )
+option = ( opcode = 0x0062 )
+return = ( opcode = 0x0008 )
+sleep  = ( opcode = 0x0063 )
+clrw   = ( opcode = 0x0103 )
+
+; ---- Jump instructions ----
+
+goto = (
+     opcode = 0x2800
+     param = (
+           size = 11
+           position = 0
+           error = <address out-of-range>
+     )
+)
+
+call = (
+     opcode = 0x2000
+     param = (
+           size = 11
+           position = 0
+           error = <address out-of-range>
+     )
+)
+
+; ---- Instructions with one 8bit operand -----
+
+addlw = (
+      opcode = 0x3E00
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+andlw = (
+      opcode = 0x3900
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+
+xorlw = (
+      opcode = 0x3A00
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+iorlw = (
+      opcode = 0x3800
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+movlw = (
+      opcode = 0x3000
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+retlw = (
+      opcode = 0x3400
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+sublw = (
+      opcode = 0x3C00
+      param = (
+            size = 8
+            position = 0
+      )
+)
+
+; ---- Instructions with two operands (file-register, destination)
+
+addwf = (
+      opcode = 0x0700
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+andwf = (
+      opcode = 0x0500
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+comf = (
+      opcode = 0x0900
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+decfsz = (
+      opcode = 0x0B00
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+incfsz = (
+      opcode = 0x0F00
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+decf = (
+      opcode = 0x0300
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+incf = (
+      opcode = 0x0A00
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+movf = (
+      opcode = 0x0800
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+iorwf = (
+      opcode = 0x0400
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+rlf = (
+      opcode = 0x0D00
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+rrf = (
+      opcode = 0x0C00
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+subwf = (
+      opcode = 0x0200
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+swapf = (
+      opcode = 0x0E00
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+xorwf = (
+      opcode = 0x0600
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+      param = (
+            size = 1
+            position = 7
+            error = <destination must be 1 or 0>
+      )
+)
+
+; ---- Bit instructions with two operands (file-register, bit)
+
+bsf = (
+    opcode = 0x1400
+    param = (
+          size = 7
+          position = 0
+          warning = <check for bank>
+    )
+    param = (
+          size = 3
+          position = 7
+          error = <bit's can be in range from 0 to 7>
+    )
+)
+
+bcf = (
+    opcode = 0x1000
+    param = (
+          size = 7
+          position = 0
+          warning = <check for bank>
+    )
+    param = (
+          size = 3
+          position = 7
+          error = <bit's can be in range from 0 to 7>
+    )
+)
+
+btfsc = (
+    opcode = 0x1800
+    param = (
+          size = 7
+          position = 0
+          warning = <check for bank>
+    )
+    param = (
+          size = 3
+          position = 7
+          error = <bit's can be in range from 0 to 7>
+    )
+)
+
+btfss = (
+    opcode = 0x1C00
+    param = (
+          size = 7
+          position = 0
+          warning = <check for bank>
+    )
+    param = (
+          size = 3
+          position = 7
+          error = <bit's can be in range from 0 to 7>
+    )
+)
+
+
+; ---- misc instructions ----
+
+movwf = (
+      opcode = 0x80
+      param = (
+            size = 7
+            position = 0
+            warning = <check for bank>
+      )
+)
+
+tris = (
+     opcode = 0x60
+     param = (
+           size = 3
+           position = 0
+           error = <misthmach in tris operand>
+     )
+)
+
+clrf = (
+     opcode = 0x180
+     param = (
+           size = 7
+           position = 0
+           warning = <check for bank>
+     )
+)
+

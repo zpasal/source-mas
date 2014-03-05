@@ -1,0 +1,96 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">3. LABELS AND INSTRUCTIONS</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt>Mas is 2 PASS assembly for PICxx family of microcontrolers. In
+first pass mas calculate all label offsets and do some directives (like
+.org for finding offsets of labels). Output of pass 1 compilation is just
+text file. This text file has no labels. Second pass do most compilation
+to make output file. Mas can make 3 different output formats (see '6. Output
+file formats').</tt>
+<p><tt>Any line of code can be:</tt>
+<ul>
+<li>
+<tt>label after goes instruction (optionally)</tt></li>
+
+<li>
+<tt>instruction</tt></li>
+
+<li>
+<tt>directive</tt></li>
+
+<li>
+<tt>assign expression</tt></li>
+
+<li>
+<tt>macro call</tt></li>
+</ul>
+<tt>anything else is a syntax error.</tt>
+<p><tt>In mas labels are declared like most x86 assemblers - name followed
+by colon. After label instruction can go, or not:</tt>
+<pre><b><tt>start:&nbsp;&nbsp; ; label definition
+
+&nbsp;&nbsp; movlw 10 ; instruction
+
+do: goto do&nbsp; ; label and instruction</tt></b></pre>
+<tt>unlike other pic assemblers where declaration of label must be at first
+character on line, in mas label can goes anywhere.</tt>
+<p><tt>All things in mas are case sensitive, so labels 'Start' and 'start'
+are two different labels. Labels can not have same name as instructions.
+Alphabet for labels contains:</tt>
+<p><tt>&nbsp; a..z A..Z 0..9 and '_'</tt>
+<p><tt>Every label must start with a..z, A..Z or '_'. Labels that start
+with numbers are illegal:</tt>
+<pre><b><tt>&nbsp;&nbsp; mylabel: ; OK
+
+&nbsp;&nbsp; _mylab123: ; OK
+
+&nbsp;&nbsp; 123lab:&nbsp; ; error - start with number</tt></b></pre>
+<tt>Instructions can have up to 3 operands. Because all operands are calculated
+in pass 2 compilation, operands can reference labels not previous declared:</tt>
+<pre><b><tt>&nbsp; start:
+
+&nbsp;&nbsp;&nbsp;&nbsp; movlw end - start ; size of code
+
+&nbsp; end:</tt></b></pre>
+<tt>There is some restrictions for operands (see '4. Assign expressions').
+In mas there exist just one version of comment. Any chars that follow <b>;</b>
+(semicolon) are skipped to end-of-line.</tt>
+<br>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas2_0.html">[PREV]</a><a href="index.htm">[HOME]</a><a href="mas4-0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

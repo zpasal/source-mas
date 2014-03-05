@@ -1,0 +1,174 @@
+#ifndef __LISTA_H
+#define __LISTA_H
+
+#include <stdexcept>
+#include "Node.hpp"
+
+#ifdef __ALATI_DEBUG
+#include <cstdio>
+#endif
+
+#ifdef __ALATI_ISPIS
+#include <iostream>
+#endif
+
+namespace MojiAlati {
+
+/*
+ *  template <typename T> class TLista
+ *
+ *	Jednostavna implementacija jednostruko povezane liste.
+ *	Svaki nod se cuva u template klasi TListaNode<T>.
+ *
+ *	cont/dest
+ *		TLista()	konstruktor
+ *		~TLista()	destruktor
+ *	metode
+ *		TListaNode<T>* Dodaj(T&)	Dodavanje novog elementa na kraj liste
+ *		TListaNode<T>* Dodaj(const T&)	Dodavanje novog elementa na kraj liste*
+ *		void Obrisi(TListaNode<T> *)	Brisanje elementa iz liste
+ *		TListaNode<T>* UzmiBazu()	Vraca pointer na bazu liste
+ *	operatori
+ *		operator<<			Ispis na ekran (ako je definisan makro __ALATI_ISPIS)
+ *
+ */  
+template <typename T> class TLista
+{
+       TListaNode<T> *Baza;
+public:
+       TLista()
+       {
+              Baza = 0;
+       }
+
+       ~TLista();
+       
+       TListaNode<T>* Dodaj(T &Pod);
+       TListaNode<T>* Dodaj(const T &Pod)
+       {
+       return Dodaj((T&)Pod);
+       }
+
+       void Obrisi(TListaNode<T> *);
+       
+       TListaNode<T>* UzmiBazu() 
+       {
+	       return Baza;
+       }
+
+       #ifdef __ALATI_ISPIS
+       friend std::ostream& operator<< <T>(std::ostream&, TLista<T>&);
+       #endif
+};
+
+template <typename T> TLista<T>::~TLista()
+{
+TListaNode<T> *n, *p;
+	if (Baza == 0) return;
+	if (Baza->Slijedeci == 0) {
+		delete Baza;
+	}
+	else {
+		n = Baza->Slijedeci;
+		p = Baza;
+		while(n != 0) {
+			delete p;
+			p = n;
+			n = n->Slijedeci;
+		}
+		delete p;
+	}
+}
+
+template <typename T> TListaNode<T>* TLista<T>::Dodaj(T &Pod)
+{
+TListaNode<T> *Cond = Baza;
+       if (!Baza) {
+              Cond = Baza = new TListaNode<T>;
+       }
+       else {
+              while(Cond->Slijedeci)
+                     Cond = Cond->Slijedeci;
+              Cond->Slijedeci = new TListaNode<T>;
+              Cond = Cond->Slijedeci;
+       }
+       Cond->Slijedeci = 0;
+       Cond->Vrijednost = Pod;
+return Cond;
+}
+
+/*
+ *
+ *  {a, 0}
+ *  {a, 1} {b, 0}
+ *  {a, 1} {b, 2} {c, 3} {d, 0}
+ *
+ * */
+template <typename T> void TLista<T>::Obrisi(TListaNode<T> *Ptr)
+{
+TListaNode<T> *n, *p, *t;
+       if (!Ptr) return;
+       if (Ptr == Baza) {
+	       p = Baza->Slijedeci;
+	       delete Baza;
+	       Baza = p;
+       }
+       else {
+	       p = Baza->Slijedeci;
+	       n = Baza;
+	       while(p != Ptr) {
+		       n = p;
+		       p = p->Slijedeci;
+	       }
+	       // imamo : p == koji brisemo, n = prije njega jedan
+	       t = p->Slijedeci;
+	       delete p;
+	       n->Slijedeci = t;
+       }
+}
+
+#ifdef __ALATI_ISPIS
+template <typename T> std::ostream& operator<<(std::ostream& c, TLista<T> &Lista)
+{
+TListaNode<T> *Cond = Lista.Baza;
+       c << "{ ";
+       while(Cond) {
+              c << Cond->Vrijednost << " ";
+              Cond = Cond->Slijedeci;
+       }
+       c << "}" << endl;
+return c;
+}
+#endif
+
+
+template <typename T> class TListaIterator
+{
+	TListaNode<T> *Pocetak, *Tekuci;
+public:
+	TListaIterator(TLista<T> &Lista) 
+	{
+		Pocetak = Tekuci = Lista.UzmiBazu();
+	}
+
+	operator T&()
+	{
+		return Tekuci->Vrijednost;
+	}
+
+	bool Kraj()
+	{
+		return Tekuci == 0;
+	}
+
+	bool Slijedeci()
+	{
+		if (!Kraj())
+			Tekuci = Tekuci->Slijedeci;
+	}
+};
+
+
+} // end-of-namespace
+
+#endif

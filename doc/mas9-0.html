@@ -1,0 +1,259 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">9. DEVICE DESCRIPTION FILES</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt>Mas is generic assembly, so it can make code for another PICxxx
+microcontrollers or others. Do not think that mas can generate code for
+any assembler (like Motorola, x86, ...) mas's scripts are very limited.</tt>
+<p><tt>All scripts are in 'device' directory where mas is installed or
+in user specifed (see '<a href="mas2_0.html">2. Command syntax</a>') and
+any script have extension '.dev'.</tt>
+<p><tt>Script has two parts: header and instruction-descriptors. Header
+is just few assignments that describe device:</tt>
+<pre><tt>&nbsp; 'device' = name-of-device
+
+&nbsp; 'core' = number-of-bits-per-opcode
+
+&nbsp; 'memory' = max-memory-size-for-code
+
+&nbsp; 'inst' = number-of-instructions</tt></pre>
+<tt>(must be in this order). For PIC16C84 it will be:</tt>
+<pre><b><tt>&nbsp; device = P16C84
+
+&nbsp; core = 14&nbsp;&nbsp;
+
+&nbsp; memory = 0x3FF&nbsp;&nbsp;
+
+&nbsp; inst = 37</tt></b></pre>
+<tt>'device' represents name of device. Name will be prefixed with '__'.
+So, in asm code it can be used for checking:</tt>
+<pre><b><tt>&nbsp; .if .isndef __P16C84
+
+&nbsp;&nbsp; .error Device must be PIC16C84
+
+&nbsp; .endif</tt></b></pre>
+<i><tt>WARNING: device names are case-sensitive!</tt></i>
+<p><tt>'core'&nbsp; is number of bits per instruction</tt>
+<br><tt>'memory'is number of how mutch memory is implemented on chip</tt>
+<br><tt>'inst'&nbsp; number of instructions</tt>
+<p><tt>After header, comes descriptors for instructions. Syntax is:</tt>
+<pre><i><tt>&nbsp;name '='&nbsp; '('&nbsp;&nbsp; 'opcode' = number [ 'param'
+= operand-desc]
+
+&nbsp; ['param' = operand-desc]] ['param' = operand-desc] ')'</tt></i></pre>
+<i><tt>&nbsp;operand-desc := '(' 'size' = number 'position' = number</tt></i>
+<br><i><tt>&nbsp;&nbsp;&nbsp; [{'warning', 'error'} = '&lt;' any chars'>']</tt></i>
+<p><tt>To describe simple instruction without operands (like NOP) :</tt>
+<pre><b><tt>&nbsp;nop = ( opcode = 0 ) ; opcode for NOP is 0x0</tt></b></pre>
+<tt>If instruction have one operand (like addlw) we must use operand-descriptor.
+Let see first one example: Format of 'addlw' is:</tt>
+<pre><b><tt>&nbsp; addlw f</tt></b></pre>
+<tt>where 'f' is file-register (7bit number). Generaly, opcode is:</tt>
+<pre><b><tt>&nbsp; 0b1111100fffffff
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...6543210</tt></b></pre>
+<tt>where 'ff..f' is bits of operand (file register). So, operand is 7bit
+in size and starting offset of operand in opcode is 0. We must know this
+for 'size' and 'position' assignments in script. Script will be:</tt>
+<pre><b><tt>&nbsp; addlw = (
+
+&nbsp;&nbsp; opcode = 0b11111000000000
+
+&nbsp;&nbsp; param = (&nbsp;&nbsp;&nbsp; ; operand 1 description
+
+&nbsp;&nbsp;&nbsp; size = 7 ; size of operand
+
+&nbsp;&nbsp;&nbsp; position = 0 ; position of operand
+
+&nbsp;&nbsp; )
+
+&nbsp; )</tt></b></pre>
+&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><tt>If we write, in asm code, operand that is bigger than 7bits warning
+is issued:</tt>
+<p><tt><u>&nbsp;operand too big, truncating to ...</u></tt>
+<p><tt>Sometimes, this is not what we want. Let see 'addwf' instruction:</tt>
+<pre><b><tt>&nbsp;&nbsp; addwf f, d</tt></b></pre>
+
+<p><br><tt>f - file-register</tt>
+<br><tt>d - destination (0 or 1)</tt>
+<p><tt>opcode is:</tt>
+<p><b><tt>&nbsp;111dfffffff</tt></b>
+<p><tt>If, we write:</tt>
+<pre><b><tt>&nbsp; addwf 0x20, 3&nbsp; ; dest must be 0 or 1</tt></b></pre>
+<tt>mostly this is error. So we need syntax to issue error. We just write
+in script:</tt>
+<pre><b><tt>&nbsp;addwf = (
+
+&nbsp; opcode = 0b11100000000
+
+&nbsp; param = (&nbsp; ; first param
+
+&nbsp;&nbsp; size = 7 ; 7bit file register
+
+&nbsp;&nbsp; position = 0 ; starting at position 0
+
+&nbsp; )
+
+&nbsp; param = (&nbsp; ; second param
+
+&nbsp;&nbsp; size = 1 ; destination 0 or 1
+
+&nbsp;&nbsp; position = 7 ; starting at position 7
+
+&nbsp;&nbsp; error = &lt;destination must be 0 or 1>
+
+&nbsp; )
+
+&nbsp;)</tt></b></pre>
+
+<p><br><tt>If mas find second operand for 'addwf' that can not be represented
+with 'size' bits, it will issue error with our text:</tt>
+<p><tt><u>'destination must be 0 or 1'</u></tt>
+<p><tt>Sometimes, we will issue warning - just replace 'error' with warning.
+In p16c84.dev 'addwf' instruction is written like:</tt>
+<pre><b><tt>&nbsp;addwf = (
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; opcode = 0x0700
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; param = (
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+size = 7
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+position = 0
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+warning = &lt;check for bank>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; param = (
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+size = 1
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+position = 7
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+error = &lt;destination must be 1 or 0>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+
+&nbsp;)</tt></b></pre>
+<tt>Maximum is 3 parametars for instruction!</tt>
+<p><tt>Finally, let write some hypothetical processor. This processor have
+just 4 instructions:</tt>
+<br>&nbsp;
+<ul>
+<li>
+<tt>increment accumulator</tt></li>
+
+<li>
+<tt>load constant into accumulator</tt></li>
+
+<li>
+<tt>write accumulator to memory</tt></li>
+
+<li>
+<tt>jump if accumulator is not zero</tt></li>
+</ul>
+
+<p><br><tt>with this instructions it can be implemented what ever we wannt!</tt>
+<br>&nbsp;
+<pre><b><tt>&nbsp;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+&nbsp;;
+
+&nbsp;;&nbsp; hipo.dev
+
+&nbsp;;
+
+&nbsp;;&nbsp; Hypothetical processor.
+
+&nbsp;;&nbsp; Format of instructions are:
+
+&nbsp;;
+
+&nbsp;; inc&nbsp; 0000000000
+
+&nbsp;; jnz addr 01cccccccc
+
+&nbsp;; lda const&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10cccccccc
+
+&nbsp;; wa&nbsp; addr 11cccccccc
+
+</tt></b>&nbsp;</pre>
+<b><tt>&nbsp;device = HYPOTETIC</tt></b>
+<br><b><tt>&nbsp;core = 10</tt></b>
+<br><b><tt>&nbsp;memory = 256</tt></b>
+<br><b><tt>&nbsp;inst = 4</tt></b>
+<p><b><tt>&nbsp;inc = (&nbsp;</tt></b>
+<br><b><tt>&nbsp; opcode = 0&nbsp;</tt></b>
+<br><b><tt>&nbsp;)</tt></b>
+<p><b><tt>&nbsp;wa&nbsp; = (&nbsp;</tt></b>
+<br><b><tt>&nbsp; opcode = 0b1100000000&nbsp;</tt></b>
+<br><b><tt>&nbsp; param = (</tt></b>
+<br><b><tt>&nbsp;&nbsp; size = 8</tt></b>
+<br><b><tt>&nbsp;&nbsp; position = 0</tt></b>
+<br><b><tt>&nbsp; )</tt></b>
+<br><b><tt>&nbsp;)</tt></b>
+<p><b><tt>&nbsp;jnz = (</tt></b>
+<br><b><tt>&nbsp; opcode = 0b0100000000</tt></b>
+<br><b><tt>&nbsp; param = (</tt></b>
+<br><b><tt>&nbsp;&nbsp; size = 8</tt></b>
+<br><b><tt>&nbsp;&nbsp; position = 0</tt></b>
+<br><b><tt>&nbsp; )</tt></b>
+<br><b><tt>&nbsp;)</tt></b>
+<p><b><tt>&nbsp;lda = (</tt></b>
+<br><b><tt>&nbsp; opcode = 0b100000000</tt></b>
+<br><b><tt>&nbsp; param = (</tt></b>
+<br><b><tt>&nbsp;&nbsp; size = 8</tt></b>
+<br><b><tt>&nbsp;&nbsp; position = 0</tt></b>
+<br><b><tt>&nbsp;&nbsp; error = &lt;address out of range></tt></b>
+<br><b><tt>&nbsp; )</tt></b>
+<br><b><tt>&nbsp;)</tt></b>
+<p><tt>; end of hipo.dev</tt>
+<br>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas8-3.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas10-0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

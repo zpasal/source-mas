@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">12. INSTALLING AND PORTUNG TO ANOTHER
+OS</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt>Mas binaries and source can be downloaded from&nbsp;</tt>
+<p><tt><a href="www.sf.net/projects/mas-pic16c84">www.sf.net/projects/mas-pic16c84</a></tt>
+<p><tt>For now, only binaries for Win32 and LINUX/unix are distributed.</tt>
+<p><tt><u>Win32 installing:</u></tt>
+<p><tt>Easiest way is to download install-mas-win32.exe. Just follow on
+screen instructions.</tt>
+<p><tt>Another way is to download source file to build:</tt>
+<ul>
+<li>
+<tt>You need c++ compiler that is (mutch as can be) written with standard.
+I preffer MinGW and source for mas (source-mas.zip)</tt></li>
+
+<li>
+<tt>Unzip surce to some directory</tt></li>
+
+<li>
+<tt>run 'make CFG=Relese' from command line to build mas.exe. If you wannt
+mas.exe with debug information run 'make CFG=Debug'..NOTES: makefile is
+written for g++ compiler. If you have another compiler you must CHANGE
+makefile!</tt></li>
+
+<li>
+<tt>if you need to put include/device files in some another directory edit
+mas.ini. First line is path to include directory, and second line is path
+to device directory. Mas.ini MUST be in same directory where is mas.exe.</tt></li>
+</ul>
+
+<p><br><tt><u>LINUX/UNIX installing:</u></tt>
+<br>&nbsp;
+<ul>
+<li>
+<tt>You need source for mas (source-mas.tar.gz)</tt></li>
+
+<li>
+<tt>Unzip/untar surce to some directory</tt></li>
+
+<li>
+<tt>run 'make CFG=Release' from command line to build mas executable. If
+you wannt executable with debug information run 'make CFG=Debug'.</tt></li>
+
+<li>
+<tt>if you need to put include/device files in some another directory edit
+mas.ini. First line is path to include directory, and second line is path
+to device directory. Mas.ini MUST be in same directory where is mas executable.</tt></li>
+</ul>
+
+<p><br><tt>Mas can be easily ported to another platforms that support standard
+C++ compiler. It can be ported without any changes if following conditions
+are met:</tt>
+<p><tt>&nbsp; sizeof(int) == 32</tt>
+<br><tt>&nbsp; sizeof(short) == 16</tt>
+<br><tt>&nbsp; sizeof(char) == 8</tt>
+<p><tt>Most reasons for this is module for creating output formats ('object.cpp').
+Binaries for Win was compiled with gcc 3.1.</tt>
+<br>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas11-0.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas13-0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

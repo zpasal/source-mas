@@ -1,0 +1,685 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  p17c43.dev
+;
+;  Mas's device file for PIC17C43 microcontroller
+;  Copyright (C) 2004 Pasalic Zaharije
+;
+;  This files comes with ABSOLUTELY NO WARRANTY;
+;  for more details about device files and/or
+;  Lisense see documentation.
+;
+;                        Last Revision: 24-09-2004
+;
+
+device = P17C43
+core = 16
+memory = 0xFFF
+inst = 58
+
+
+tablrd = (
+        opcode = 0b1010100000000000
+        param = (
+                size = 1
+                position = 9
+                error = <destination must be 1 or 0>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+
+tablwt = (
+        opcode = 0b1010110000000000
+        param = (
+                size = 1
+                position = 9
+                error = <destination must be 1 or 0>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+
+addwf = (
+        opcode = 0b0000111000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+addwfc = (
+        opcode = 0b0001000000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+andwf = (
+        opcode = 0b0000101000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+clrf = (
+        opcode = 0b0010100000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+comf = (
+        opcode = 0b0001001000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+cpfseq = (
+        opcode = 0b0011000100000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+cpfsgt = (
+        opcode = 0b0011001000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+cpfslt = (
+        opcode = 0b0011000000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+daw = (
+        opcode = 0b0010111000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+decf = (
+        opcode = 0b0000011000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+decfsz = (
+        opcode = 0b0001011000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+dcfsnz = (
+        opcode = 0b0010011000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+incf = (
+        opcode = 0b0001010000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+incfsz = (
+        opcode = 0b0001111000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+infsnz = (
+        opcode = 0b0010010000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+iorwf = (
+        opcode = 0b0000100000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+movfp = (
+        opcode = 0b0110000000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 5
+                position = 8
+                error = <peripheral register file can be maximum 5bit>
+        )
+)
+
+movpf = (
+        opcode = 0b0100000000000000
+        param = (
+                size = 5
+                position = 8
+                error = <peripheral register file can be maximum 5bit>
+        )
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+movwf = (
+        opcode = 0b0000000100000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+mulwf = (
+        opcode = 0b0011010000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+negw = (
+        opcode = 0b0010110000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+nop = ( opcode = 0 )
+
+rlcf = (
+        opcode = 0b0001101000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+rlncf = (
+        opcode = 0b0010001000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+rrcf = (
+        opcode = 0b0001100000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+rrncf = (
+        opcode = 0b0010000000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+setf = (
+        opcode = 0b0010101000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+subwf = (
+        opcode = 0b0000010000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+subwfb = (
+        opcode = 0b0000001000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+swapf = (
+        opcode = 0b0001110000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+
+
+tlrd = (
+        opcode = 0b1010000000000000
+        param = (
+                size = 1
+                position = 9
+                error = <table destination must be 1 or 0>
+        )
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+tlwt = (
+        opcode = 0b1010010000000000
+        param = (
+                size = 1
+                position = 9
+                error = <table destination must be 1 or 0>
+        )
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+tstfsz = (
+        opcode = 0b0011001100000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+)
+
+xorwf = (
+        opcode = 0b0000110000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 1
+                position = 8
+                error = <destination must be 1 or 0>
+        )
+)
+
+bcf = (
+        opcode = 0b1000100000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 3
+                position = 8
+                error = <bit-fild must be max 3bit number>
+        )
+)
+
+bsf = (
+        opcode = 0b1000000000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 3
+                position = 8
+                error = <bit-fild must be max 3bit number>
+        )
+)
+
+btfsc = (
+        opcode = 0b1001100000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 3
+                position = 8
+                error = <bit-fild must be max 3bit number>
+        )
+)
+
+btfss = (
+        opcode = 0b1001000000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 3
+                position = 8
+                error = <bit-fild must be max 3bit number>
+        )
+)
+
+btg = (
+        opcode = 0b0011100000000000
+        param = (
+                size = 8
+                position = 0
+                warning = <check for bank>
+        )
+        param = (
+                size = 3
+                position = 8
+                error = <bit-fild must be max 3bit number>
+        )
+)
+
+addlw = (
+        opcode = 0b1011000100000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+andlw = (
+        opcode = 0b1011010100000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+call = (
+        opcode = 0b1110000000000000
+        param = (
+                size = 12
+                position = 0
+                error = <address out of range>
+        )
+)
+
+clrwdt = (
+        opcode = 0b0000000000000100
+)
+
+goto = (
+        opcode = 0b1100000000000000
+        param = (
+                size = 12
+                position = 0
+                error = <address out of range>
+        )
+)
+
+iorlw = (
+        opcode = 0b1011001100000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+lcall = (
+        opcode = 0b1011011100000000
+        param = (
+                size = 8
+                position = 0
+                error = <address out of range>
+        )
+)
+
+movlb = (
+        opcode = 0b1011100000000000
+        param = (
+                size = 4
+                position = 0
+                warning = <number truncated to 4bit>
+        )
+)
+
+movlr = (
+        opcode = 0b1011101000000000
+        param = (
+                size = 4
+                position = 4
+        )
+)
+
+movlw = (
+        opcode = 0b1011000000000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+mullw = (
+        opcode = 0b1011110000000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+retfie = ( opcode = 0b0000000000000101 )
+
+retlw = (
+        opcode = 0b1011011000000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+return = ( opcode = 2 )
+
+sleep = ( opcode = 3 )
+
+sublw = (
+        opcode = 0b1011001000000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+xorlw = (
+        opcode = 0b1011010000000000
+        param = (
+                size = 8
+                position = 0
+        )
+)
+
+

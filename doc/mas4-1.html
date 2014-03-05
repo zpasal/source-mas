@@ -1,0 +1,83 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">4.1 DEFINITION OF NEW NAME</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td>
+<br><tt>Another way to declare new name is assign expression. Syntax is:</tt>
+<p><tt>&nbsp;&nbsp; <b>name = expression</b></tt>
+<p><tt>where 'name' is any legal name (see '<a href="mas3-0.html">3. Labels
+and Instructions</a>'). With this,&nbsp; we declare name which type is
+L_VAR - variable type. L_VAR type can be reassigned to another value:</tt>
+<pre><b><tt>&nbsp;&nbsp; Data1 = 10&nbsp; ; new name
+
+&nbsp;&nbsp; Data2 = Data1 + 123 ; new name
+
+&nbsp;&nbsp; Data1 = -Data3&nbsp; ; reassignment</tt></b></pre>
+<tt>Type L_LABEL can not be reassigned.</tt>
+<p><tt>Another restriction that was introduced to this version of mas is
+dependence for previous declaration. If expression depend of some other
+name, this name must be declared previous:</tt>
+<pre><b><tt>&nbsp; Data2 = Data1&nbsp; ; error - undeclared Data1
+
+&nbsp; Data1 = 123</tt></b></pre>
+<tt>Most assemblers do not issue error for this. In previous BETA version
+of mas&nbsp; this was not error. Only reason for this was logical nature
+of code design. I DO NOT LIKE logic to reference some data that is not
+declared yet! Maybe this is one mistake, but that's me :)</tt>
+<p><tt>Unlike this, expressions CAN REFERENCE LABEL that is not declared.
+I think that is good, because it permits to calculate size of code:</tt>
+<pre><b><tt>&nbsp;&nbsp; CodeSize = end - start
+
+&nbsp; start:
+
+&nbsp;&nbsp; ; some code
+
+&nbsp; end:</tt></b></pre>
+<tt>This violate my phrase of LOGICAL CODING, but it's very useful.</tt>
+<p><tt>Right side of assign operator (=) is expression. Expression can
+have operators (unary and binary), numbers, already declared names and
+labels.</tt>
+<p><tt>Numbers are represented in C-like style with exception for binary
+numbers:</tt>
+<p><b><tt>&nbsp;'0x' followed by a..fA..F0..9 - HEX numbers</tt></b>
+<br><b><tt>&nbsp;'0b' followed by 0 or 1&nbsp; - BINARY numbers</tt></b>
+<br><b><tt>&nbsp;'0'&nbsp; followed by 0..7&nbsp; - OCTAL numbers</tt></b>
+<br><b><tt>&nbsp;'1..9' followed by 0..9&nbsp; - DECIMAL numbers</tt></b>
+<br>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas4-0.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas4-2.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

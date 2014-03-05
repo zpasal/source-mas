@@ -1,0 +1,67 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">6. OUTPUT FILE FORMATS</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>Mas have 3 output formats : 'bin', 'bt' and 'hex'</tt>
+<p><tt><u>bin:</u></tt>
+<p><tt>Bin format is raw memory dump of code and eeprom. Code is aligned
+to 16bits opcodes and all memory skipped with .org directive is filled
+with nop's.</tt>
+<p><tt><u>bt:</u></tt>
+<p><tt>This is text file format. Every line has offset and n-bit opcode
+written in binary notation:</tt>
+<pre><tt>&nbsp;0000 00000000000000
+
+&nbsp;0001 00111000011001
+
+&nbsp;0002 00011110001111</tt></pre>
+<tt>All memory skipped with .org directive is not presented.</tt>
+<p><tt><u>hex:</u></tt>
+<p><tt>This is Intel HEX file format used by most hardware that 'burn'
+code to some devices. File is text file, and every line have format:</tt>
+<pre><tt>&nbsp; :LLAAAATTDD....DDCC</tt></pre>
+<tt>&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - every line start with
+colon</tt>
+<br><tt>&nbsp;LL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - length of data in bytes</tt>
+<br><tt>&nbsp;AAAA&nbsp;&nbsp;&nbsp; - address of first byte</tt>
+<br><tt>&nbsp;DD..DD&nbsp; - data bytes</tt>
+<br><tt>&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 8bit checksum</tt>
+<br><tt></tt>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas5-8.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas7-0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

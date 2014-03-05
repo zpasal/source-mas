@@ -1,0 +1,31 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  eeprom8.dev
+;
+;  Mas's device file for '8Bit EEPROM device'
+;  Copyright (C) 2004 Pasalic Zaharije
+;
+;  This files comes with ABSOLUTELY NO WARRANTY;
+;  for more details about device files and/or
+;  Lisense see documentation.
+;
+;                        Last Revision: 24-09-2004
+;                        Revision by  : Even S. F.
+;
+
+device = EEPROM8
+core = 8
+memory = 0xFFFF
+inst = 1
+
+
+decl = (
+     opcode = 0
+     param = (
+           size = 8
+           position = 0
+           error = <8bit number expected>
+     )
+)
+
+

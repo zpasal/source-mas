@@ -1,0 +1,217 @@
+;-----------------------------------------------------------------------
+;
+; p16c64a.inc
+;
+; This is standard include file for P16C64A device. Before including this
+; file, chose P16C64A device with .device or with command switch.
+;
+; Copyright 2004 by Pasalic Zaharije
+;
+; This program is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation; either version 2 of the License, or
+; any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program; if not, write to the Free Software
+; Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+;
+; This file is generated with 'minc2inc' program.
+;
+; Last Revision: Jun 27 2004
+;
+;
+
+.if .isndef __P16C64A_INC
+.define __P16C64A_INC
+
+.if .isndef __P16C64A
+	.warn Select device __P16C64A first
+.endif
+
+.define W                    = 0x0
+.define F                    = 0x1
+
+;----- Register Files------------------------------------------------------
+
+.define INDF                 = 0x0
+.define TMR0                 = 0x1
+.define PCL                  = 0x2
+.define STATUS               = 0x3
+.define FSR                  = 0x4
+.define PORTA                = 0x5
+.define PORTB                = 0x6
+.define PORTC                = 0x7
+.define PORTD                = 0x8
+.define PORTE                = 0x9
+.define PCLATH               = 0xA
+.define INTCON               = 0xB
+.define PIR1                 = 0xC
+.define TMR1L                = 0xE
+.define TMR1H                = 0xF
+.define T1CON                = 0x10
+.define TMR2                 = 0x11
+.define T2CON                = 0x12
+.define SSPBUF               = 0x13
+.define SSPCON               = 0x14
+.define CCPR1L               = 0x15
+.define CCPR1H               = 0x16
+.define CCP1CON              = 0x17
+.define OPTION_REG           = 0x81
+.define TRISA                = 0x85
+.define TRISB                = 0x86
+.define TRISC                = 0x87
+.define TRISD                = 0x88
+.define TRISE                = 0x89
+.define PIE1                 = 0x8C
+.define PCON                 = 0x8E
+.define PR2                  = 0x92
+.define SSPADD               = 0x93
+.define SSPSTAT              = 0x94
+
+;----- STATUS Bits --------------------------------------------------------
+
+.define IRP                  = 0x7
+.define RP1                  = 0x6
+.define RP0                  = 0x5
+.define NOT_TO               = 0x4
+.define NOT_PD               = 0x3
+.define Z                    = 0x2
+.define DC                   = 0x1
+.define C                    = 0x0
+
+;----- INTCON Bits --------------------------------------------------------
+
+.define GIE                  = 0x7
+.define PEIE                 = 0x6
+.define T0IE                 = 0x5
+.define INTE                 = 0x4
+.define RBIE                 = 0x3
+.define T0IF                 = 0x2
+.define INTF                 = 0x1
+.define RBIF                 = 0x0
+
+;----- PIR1 Bits ----------------------------------------------------------
+
+.define PSPIF                = 0x7
+.define SSPIF                = 0x3
+.define CCP1IF               = 0x2
+.define TMR2IF               = 0x1
+.define TMR1IF               = 0x0
+
+;----- T1CON Bits ---------------------------------------------------------
+
+.define T1CKPS1              = 0x5
+.define T1CKPS0              = 0x4
+.define T1OSCEN              = 0x3
+.define NOT_T1SYNC           = 0x2
+.define T1INSYNC             = 0x2
+.define TMR1CS               = 0x1
+.define TMR1ON               = 0x0
+
+;----- T2CON Bits ---------------------------------------------------------
+
+.define TOUTPS3              = 0x6
+.define TOUTPS2              = 0x5
+.define TOUTPS1              = 0x4
+.define TOUTPS0              = 0x3
+.define TMR2ON               = 0x2
+.define T2CKPS1              = 0x1
+.define T2CKPS0              = 0x0
+
+;----- SSPCON Bits --------------------------------------------------------
+
+.define WCOL                 = 0x7
+.define SSPOV                = 0x6
+.define SSPEN                = 0x5
+.define CKP                  = 0x4
+.define SSPM3                = 0x3
+.define SSPM2                = 0x2
+.define SSPM1                = 0x1
+.define SSPM0                = 0x0
+
+;----- CCP1CON Bits -------------------------------------------------------
+
+.define CCP1X                = 0x5
+.define CCP1Y                = 0x4
+.define CCP1M3               = 0x3
+.define CCP1M2               = 0x2
+.define CCP1M1               = 0x1
+.define CCP1M0               = 0x0
+
+;----- OPTION Bits --------------------------------------------------------
+
+.define NOT_RBPU             = 0x7
+.define INTEDG               = 0x6
+.define T0CS                 = 0x5
+.define T0SE                 = 0x4
+.define PSA                  = 0x3
+.define PS2                  = 0x2
+.define PS1                  = 0x1
+.define PS0                  = 0x0
+
+;----- TRISE Bits ---------------------------------------------------------
+
+.define IBF                  = 0x7
+.define OBF                  = 0x6
+.define IBOV                 = 0x5
+.define PSPMODE              = 0x4
+.define TRISE2               = 0x2
+.define TRISE1               = 0x1
+.define TRISE0               = 0x0
+
+;----- PIE1 Bits ----------------------------------------------------------
+
+.define PSPIE                = 0x7
+.define SSPIE                = 0x3
+.define CCP1IE               = 0x2
+.define TMR2IE               = 0x1
+.define TMR1IE               = 0x0
+
+;----- PCON Bits ----------------------------------------------------------
+
+.define NOT_POR              = 0x1
+.define NOT_BO               = 0x0
+.define NOT_BOR              = 0x0
+
+;----- SSPSTAT Bits -------------------------------------------------------
+
+.define D                    = 0x5
+.define I2C_DATA             = 0x5
+.define NOT_A                = 0x5
+.define NOT_ADDRESS          = 0x5
+.define D_A                  = 0x5
+.define DATA_ADDRESS         = 0x5
+.define P                    = 0x4
+.define I2C_STOP             = 0x4
+.define S                    = 0x3
+.define I2C_START            = 0x3
+.define R                    = 0x2
+.define I2C_READ             = 0x2
+.define NOT_W                = 0x2
+.define NOT_WRITE            = 0x2
+.define R_W                  = 0x2
+.define READ_WRITE           = 0x2
+.define UA                   = 0x1
+.define BF                   = 0x0
+.define _BODEN_ON            = 0x3FFF
+.define _BODEN_OFF           = 0x3FBF
+.define _CP_ALL              = 0xCF
+.define _CP_75               = 0x15DF
+.define _CP_50               = 0x2AEF
+.define _CP_OFF              = 0x3FFF
+.define _PWRTE_OFF           = 0x3FFF
+.define _PWRTE_ON            = 0x3FF7
+.define _WDT_ON              = 0x3FFF
+.define _WDT_OFF             = 0x3FFB
+.define _LP_OSC              = 0x3FFC
+.define _XT_OSC              = 0x3FFD
+.define _HS_OSC              = 0x3FFE
+.define _RC_OSC              = 0x3FFF
+
+.endif

@@ -1,0 +1,105 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">7.2 paralax.inc</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>Paralax.inc include file has some macros that looks like paralax
+instructions (Paralax instructions are not real instructions, but some
+assemblers support them to provide easier code writing and each instructions
+is represented</tt>
+<br><tt>with one or more real instructions).</tt>
+<p><tt>Following macros are in paralax.inc:</tt>
+<p><tt><u>ARITMETIC</u></tt>
+<p><tt>AddFL(freg, lit)&nbsp;&nbsp; Add Literal to FReg</tt>
+<br><tt>AddFF(freg1, freg2)&nbsp;&nbsp; Add FReg2 to FReg2</tt>
+<br><tt>SubFL(freg, lit)&nbsp; Subtract Literal from FReg</tt>
+<br><tt>SubFF(freg1, freg2)&nbsp; Subtract FReg2 from FREg1</tt>
+<p><tt><u>LOGIC</u></tt>
+<p><tt>AndFL(freg, lit)&nbsp;&nbsp; AND Freg with Literal</tt>
+<br><tt>AndFF(freg1, freg2)&nbsp;&nbsp; AND FReg1 and FReg2</tt>
+<br><tt>NegF(freg)&nbsp;&nbsp; Neg FReg</tt>
+<br><tt>OrFL(freg, lit)&nbsp;&nbsp; Or FReg with Literal</tt>
+<br><tt>OrFF(freg1, freg2)&nbsp;&nbsp; Or FREg1 with FReg2</tt>
+<br><tt>XorFL(freg, lit)&nbsp; Xor FReg with Literal</tt>
+<br><tt>XorFF(freg1, freg2)&nbsp; Xor FReg1 with FReg2</tt>
+<p><tt><u>JUMP</u></tt>
+<p><tt>JmpFAL(freg, lit, addr)&nbsp; Jump if FReg above Literal</tt>
+<br><tt>JmpFAF(freg1, freg2, addr)&nbsp; Jump if FReg1 Above FReg2</tt>
+<br><tt>JmpFAEL(freg, lit, addr)&nbsp; Jump if FReg above or Equal Literal</tt>
+<br><tt>JmpFAEF(freg1, freg2, addr)&nbsp;&nbsp; Jump if FReg1 above or
+Equal FReg2</tt>
+<br><tt>JmpFBL(freg, lit, addr)&nbsp; Jump if FReg Below Literal</tt>
+<br><tt>JmpFBF(freg1, freg2, addr) Jump if FReg1 Below FReg2</tt>
+<br><tt>JmpFBEL(freg1, lit, addr) Jump if FReg Below or Equal Literal</tt>
+<br><tt>JmpFBEF(freg1, freg2, addr) Jump if FReg1 Below or Equal FReg2</tt>
+<br><tt>JmpFEL(freg, lit, addr)&nbsp; Jump if FReg Equal Literal</tt>
+<br><tt>JmpFEF(freg1, freg2, addr) Jump if FReg1 Equal FReg2</tt>
+<br><tt>JmpFNEL(freg, lit, addr) Jump if FReg Not Equal Literal</tt>
+<br><tt>JmpFNEF(freg1, freg2, addr) Jump if FReg1 Not Equal FReg2</tt>
+<br><tt>JmpB(freg, bit, addr)&nbsp; Jump if Bit set in FReg</tt>
+<br><tt>JmpNB(freg, bit, addr)&nbsp; Jump if Not Bit set in FReg</tt>
+<br><tt>JmpC(addr)&nbsp;&nbsp; Jump if Carry set</tt>
+<br><tt>JmpNC(addr)&nbsp;&nbsp; Jump if Not Carry set</tt>
+<br><tt>JmpZ(addr)&nbsp;&nbsp; Jump if Zero set</tt>
+<br><tt>JmpNZ(addr)&nbsp;&nbsp; Jump if Not Zero set</tt>
+<br><tt>IncJmpNZ(freg, addr)&nbsp; Increment FReg and Jump if Not Zero</tt>
+<br><tt>DecJmpNZ(freg, addr)&nbsp; Decrement FReg and Jump if Not Zero</tt>
+<p><tt><u>SKIP NEXT INSTRUCTIONS IF ...</u></tt>
+<p><tt>SkipFAL(freg, lit)&nbsp; Skip if FReg Above Literal</tt>
+<br><tt>SkipFAF(freg1, freg2)&nbsp; Skip if FReg1 Above FReg2</tt>
+<br><tt>SkipFAEL(freg, lit)&nbsp; Skip if FReg Above or Equal Literal</tt>
+<br><tt>SkipFAEF(freg1, freg2)&nbsp; Skip if FReg1 Above or Equal FReg2</tt>
+<br><tt>SkipFBL(freg, lit)&nbsp; Skip if FReg Below Literal</tt>
+<br><tt>SkipFBF(freg1, freg2)&nbsp; Skip if FReg1 Below FReg2</tt>
+<br><tt>SkipFBEL(freg, lit)&nbsp; Skip if FReg Below or Equal Literal</tt>
+<br><tt>SkipFBEF(freg1, freg2)&nbsp; Skip if FReg1 Below or Equal FReg2</tt>
+<br><tt>SkipFEL(freg, lit)&nbsp; Skip if FReg Equal Literal</tt>
+<br><tt>SkipFEF(freg1, freg2)&nbsp; Skip if FReg1 Equal FReg2</tt>
+<br><tt>SkipFNEL(freg, lit)&nbsp; Skip if FReg Not Equal Literal</tt>
+<br><tt>SkipFNEF(freg1, freg2)&nbsp; Skip if FReg1 Not Equal FReg2</tt>
+<p><tt><u>MOVE</u></tt>
+<p><tt>MovFL(freg, lit)&nbsp; Mov Literal to FReg</tt>
+<br><tt>MovFF(freg1, freg2)&nbsp; Mov FReg2 to FReg1</tt>
+<br>&nbsp;
+<p><tt>All macros will work correctly for all PIC10, PIC12, PIC16 and PIC17
+devices. A lot macros will affect Working register and some flags. To see
+detailed description for all macros look at paralax.inc file in include
+directory.</tt>
+<br>&nbsp;</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas7-1.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas7-3.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

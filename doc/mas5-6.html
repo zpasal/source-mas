@@ -1,0 +1,179 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">5.6 .macro .endm .left .right .argc</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>Macro declaration:</tt>
+<pre><b><tt>&nbsp;&nbsp; .macro name [expression]
+
+&nbsp;&nbsp;&nbsp; ; macro code
+
+&nbsp;&nbsp; .endm</tt></b></pre>
+<tt>where 'name' is name of macro and expression is optional number of
+arguments that macro can use. Most simple macro does not have arguments:</tt>
+<pre><b><tt>&nbsp; .macro IncW
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addlw 1
+
+&nbsp; .endm</tt></b></pre>
+<tt>Calling macro syntax is same like calling functions from C:</tt>
+<pre><b><tt>&nbsp; start:
+
+&nbsp;&nbsp;&nbsp;&nbsp; ; some code
+
+&nbsp;&nbsp;&nbsp;&nbsp; IncW() ; call IncW macro</tt></b></pre>
+&nbsp;
+<p>&nbsp;
+<p><tt>To specify arguments, number of arguments goes after macro name.
+To access specific argument we must write #'num' where 'num' is one digit
+number (from 0 to 9):</tt>
+<pre><b><tt>&nbsp; .macro IncF 1
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; incf #0, 1 ; #0 is first argument
+
+&nbsp; .endm</tt></b></pre>
+<b><tt>&nbsp; start:</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp; movlw 0x10</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp; movwf 0x20</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp; IncF(0x20)</tt></b>
+<p><tt>Macro can have maximum of 10 arguments (named #0 .. #9). When we
+call macro, any parameters are expressions, so we can write:</tt>
+<pre><b><tt>&nbsp;&nbsp; a = 10
+
+&nbsp;&nbsp; IncF(123-a)&nbsp; ; call IncF(113)</tt></b></pre>
+<tt>If we want to pass argument without calculating expression we must
+enclose it with &lt; >:</tt>
+<pre><b><tt>&nbsp;&nbsp; a = 10
+
+&nbsp;&nbsp; IncF(&lt;a>)</tt></b></pre>
+<tt>is expanded to:</tt>
+<pre><b><tt>&nbsp;&nbsp; incf a, 1</tt></b></pre>
+<tt>not to:</tt>
+<pre><b><tt>&nbsp;&nbsp; incf 10, 1</tt></b></pre>
+
+<p><br><tt>If we want to declare macro without knowing number of arguments
+we must put 0 for argument number. To use this params we must use some
+directives:</tt>
+<p><tt>&nbsp; .left</tt>
+<br><tt>&nbsp; .right</tt>
+<br><tt>&nbsp; .argc</tt>
+<p><tt>First parameter is on position #0, after .left all params are rotated
+to left, so after .left,&nbsp; #0 have value of second parameter. .right
+do same, just in other direction.</tt>
+<p><tt>To find how many arguments is passed to macro .argc contain number
+of arguments:</tt>
+<pre><b><tt>&nbsp; .macro Sumation 0
+
+&nbsp;&nbsp;&nbsp;&nbsp; movf #0, 0
+
+&nbsp;&nbsp;&nbsp;&nbsp; .rep (.argc - 1)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .left
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addwf #0, 0
+
+&nbsp;&nbsp;&nbsp;&nbsp; .endrep
+
+&nbsp; .endm</tt></b></pre>
+<tt>This macro just sum all params in working register:</tt>
+<pre><b><tt>&nbsp;&nbsp; Sumation(0x20, 0x21, 0x22)</tt></b></pre>
+<tt>is expanded to:</tt>
+<pre><b><tt>&nbsp; movf&nbsp; 0x20, 0
+
+&nbsp; addwf 0x21, 0
+
+&nbsp; addwf 0x22, 0&nbsp; ; W = 0x20 + 0x21 + 0x22</tt></b></pre>
+<tt>If we call macro Sumation without params it will be expanded (too much
+times) because (.argc-1) will be negative, to correct this:</tt>
+<pre><b><tt>&nbsp; .macro Sumation 0
+
+&nbsp;&nbsp;&nbsp;&nbsp; .if .argc > 0
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; movf #0, 0
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .rep .argc - 1
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .left
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addwf #0, 0
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .endrep
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .endif
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .error Provide one
+or more params
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .else
+
+&nbsp; .endm</tt></b></pre>
+<tt>Again, 10 arguments is maximum!</tt>
+<p><tt>Recurrence macro call is legal and mas will not issue any message
+about this. It is YOURS responsibility to check infinity macro recurrence:</tt>
+<pre><b><tt>&nbsp; .macro Rec
+
+&nbsp;&nbsp;&nbsp;&nbsp; Rec()
+
+&nbsp; .endm</tt></b></pre>
+<tt>will crash! But:</tt>
+<pre><b><tt>&nbsp; .macro Rec 1
+
+&nbsp;&nbsp;&nbsp; .if .isndef _Rec
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _Rec = #0
+
+&nbsp;&nbsp;&nbsp; .else
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _Rec = _Rec - 1
+
+&nbsp;&nbsp;&nbsp; .endif
+
+&nbsp;&nbsp;&nbsp; .if _Rec != 0
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rec(a)
+
+&nbsp;&nbsp;&nbsp; .endif
+
+&nbsp; .endm</tt></b></pre>
+<tt>will countdown recursively 'n' times:</tt>
+<pre><b><tt>&nbsp; start:
+
+&nbsp;&nbsp;&nbsp;&nbsp; Rec(10)</tt></b></pre>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas5-5.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas5-7.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

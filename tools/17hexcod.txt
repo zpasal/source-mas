@@ -1,0 +1,121 @@
+0000   0EFF           00002         addwf 0xFF, 0
+0001   0F10           00003         addwf 0x10, 1
+0002   10FF           00004         addwfc 0xFF, 0
+0003   1110           00005         addwfc 0x10, 1
+0004   0AFF           00006         andwf 0xff, 0
+0005   0B10           00007         andwf 0x10, 1
+0006   28FF           00008         clrf  0xff, 0
+0007   2910           00009         clrf 0x10, 1
+0008   12FF           00010         comf 0xff,0
+0009   1310           00011         comf 0x10, 1
+000A   31FF           00012         cpfseq 0xff
+000B   3110           00013         cpfseq 0x10
+000C   32FF           00014         cpfsgt 0xff
+000D   3210           00015         cpfsgt 0x10
+000E   30FF           00016         cpfslt 0xff
+000F   3010           00017         cpfslt 0x10
+0010   2EFF           00018         daw 0xff, 0
+0011   2F10           00019         daw 0x10 , 1
+0012   06FF           00020         decf 0xff, 0
+0013   0710           00021         decf 0x10, 1
+0014   16FF           00022         decfsz 0xff, 0
+0015   1710           00023         decfsz 0x10, 1
+0016   26FF           00024         dcfsnz 0xff, 0
+0017   2710           00025         dcfsnz 0x10, 1
+0018   14FF           00026         incf 0xff, 0
+0019   1510           00027         incf 0x10, 1
+001A   1EFF           00028         incfsz 0xff, 0
+001B   1F10           00029         incfsz 0x10, 1
+001C   24FF           00030         infsnz 0xff,0
+001D   2510           00031         infsnz 0x10, 1
+001E   08FF           00032         iorwf 0xff, 0
+001F   0910           00033         iorwf 0x10, 1
+0020   60FF           00034         movfp 0xff, 0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0021   61FF           00035         movfp 0xFF, 0b00001
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0022   7110           00036         movfp 0x10, 0b11111
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0023   5F01           00037         movpf 0xFF, 0b00001
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0024   5011           00038         movpf 0x10, 0b11111
+0025   01FF           00039         movwf 0xff
+0026   0110           00040         movwf 0x10
+0027   34FF           00041         mulwf 0xff
+0028   3410           00042         mulwf 0x10
+0029   2CFF           00043         negw  0xff, 0
+002A   2D10           00044         negw 0x10, 1
+002B   0000           00045         nop
+002C   1AFF           00046         rlcf 0xff, 0
+002D   1B10           00047         rlcf 0x10, 1
+002E   22FF           00048         rlncf 0xff, 0
+002F   2310           00049         rlncf 0x10, 1
+0030   18FF           00050         rrcf 0xff, 0
+0031   1910           00051         rrcf 0x10, 1
+0032   20FF           00052         rrncf 0xff, 0
+0033   2110           00053         rrncf 0x10, 1
+0034   2AFF           00054         setf 0xff, 0
+0035   2B10           00055         setf 0x10, 1
+0036   04FF           00056         subwf 0xff, 0
+0037   0510           00057         subwf 0x10, 1
+0038   02FF           00058         subwfb 0xff, 0
+0039   0310           00059         subwfb 0x10, 1
+003A   1CFF           00060         swapf 0xff, 0
+003B   1D10           00061         swapf 0x10, 1
+003C   A8FF           00062         tablrd 0, 0, 0xff
+003D   A910           00063         tablrd 0, 1, 0x10
+003E   AA10           00064         tablrd 1, 0, 0x10
+003F   AB10           00065         tablrd 1, 1, 0x10
+0040   ACFF           00066         tablwt 0, 0, 0xff
+0041   AD10           00067         tablwt 0, 1, 0x10
+0042   AE10           00068         tablwt 1, 0, 0x10
+0043   AF10           00069         tablwt 1, 1, 0x10
+0044   A0FF           00070         tlrd   0, 0xff
+0045   A210           00071         tlrd   1, 0x10
+0046   A4FF           00072         tlwt   0, 0xff
+0047   A610           00073         tlwt 1, 0x10
+0048   33FF           00074         tstfsz 0xff
+0049   3310           00075         tstfsz 0x10
+004A   0CFF           00076         xorwf 0xff, 0
+004B   0D10           00077         xorwf 0x10, 1
+004C   88FF           00079         bcf 0xff, 0
+004D   8F10           00080         bcf 0x10, 7
+004E   80FF           00081         bsf 0xff, 0
+004F   8710           00082         bsf 0x10, 7
+0050   98FF           00083         btfsc 0xff, 0
+0051   9F10           00084         btfsc 0x10, 7
+0052   90FF           00085         btfss 0xff, 0
+0053   9710           00086         btfss 0x10, 7
+0054   38FF           00087         btg 0xff, 0
+0055   3F10           00088         btg 0x10, 7
+0056   B1FF           00090         addlw 0xff
+0057   B110           00091         addlw 0x10
+0058   B5FF           00092         andlw 0xff
+0059   B510           00093         andlw 0x10
+005A   EFFF           00094         call 0xFFF
+005B   E010           00095         call 0x10
+005C   0004           00096         clrwdt
+005D   CFFF           00097         goto 0xfff
+005E   C0FF           00098         goto 0xff
+005F   B3FF           00099         iorlw 0xff
+0060   B310           00100         iorlw 0x10
+0061   B7FF           00101         lcall 0xff
+0062   B710           00102         lcall 0x10
+0063   B80F           00103         movlb 0xf
+0064   B801           00104         movlb 1
+0065   BAF0           00105         movlr 0xf
+0066   BA10           00106         movlr 0x1
+0067   B0FF           00107         movlw 0xff
+0068   B010           00108         movlw 0x10
+0069   BCFF           00109         mullw 0xff
+006A   BC10           00110         mullw 0x10
+006B   0005           00111         retfie
+006C   B6FF           00112         retlw 0xff
+006D   B610           00113         retlw 0x10
+006E   0002           00114         return
+006F   0003           00115         sleep
+0070   B2FF           00116         sublw 0xff
+0071   B210           00117         sublw 0x10
+0072   B4FF           00118         xorlw 0xff
+0073   B410           00119         xorlw 0x10

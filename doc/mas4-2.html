@@ -1,0 +1,489 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">4.2 OPERATORS AND PRECEDENCE</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt></tt>
+<br><tt>There is two type of operators - unary and binary:</tt>
+<p><tt>Unary:</tt>
+<br><tt>&nbsp;&nbsp; - sign change</tt>
+<br><tt>&nbsp;&nbsp; + sign change (not evaluated)</tt>
+<br><tt>&nbsp;&nbsp; ~ complement</tt>
+<br><tt>&nbsp;&nbsp; ! negation</tt>
+<p><tt>Binary:</tt>
+<br><tt>&nbsp;&nbsp; -&nbsp; subtraction</tt>
+<br><tt>&nbsp;&nbsp; +&nbsp; addition</tt>
+<br><tt>&nbsp;&nbsp; *&nbsp; multiplication</tt>
+<br><tt>&nbsp;&nbsp; /&nbsp; division</tt>
+<br><tt>&nbsp;&nbsp; %&nbsp; modulo</tt>
+<br><tt>&nbsp;&nbsp; &amp;&nbsp; and</tt>
+<br><tt>&nbsp;&nbsp; |&nbsp; or</tt>
+<br><tt>&nbsp;&nbsp; ^&nbsp; xor</tt>
+<br><tt>&nbsp;&nbsp; &lt;&lt; shift left</tt>
+<br><tt>&nbsp;&nbsp; >> shift right</tt>
+<br><tt>&nbsp;&nbsp; &lt;&nbsp; less</tt>
+<br><tt>&nbsp;&nbsp; &lt;= less-or-equ</tt>
+<br><tt>&nbsp;&nbsp; >&nbsp; greater</tt>
+<br><tt>&nbsp;&nbsp; >= greater-or-equ</tt>
+<br><tt>&nbsp;&nbsp; == equ</tt>
+<br><tt>&nbsp;&nbsp; != not-equ</tt>
+<p><tt>In addition, there is some functions that act like operators:</tt>
+<p><tt>&nbsp; .isdef</tt>
+<br><tt>&nbsp; .isndef</tt>
+<br><tt>&nbsp; .ror</tt>
+<br><tt>&nbsp; .rol</tt>
+<br><tt>&nbsp; .hi8</tt>
+<br><tt>&nbsp; .lo8</tt>
+<br><tt>&nbsp; .hi16</tt>
+<br><tt>&nbsp; .lo16</tt>
+<p><tt>Operators .ror and .rol are binary operators, others are unary.
+.ror and .rol rotate number right/left:</tt>
+<pre><b><tt>&nbsp; Data1 = 3
+
+&nbsp; Data2 = Data1 .ror 4 ; rotate 4 bits right</tt></b></pre>
+<tt>Most assemblers have operators that manipulate with high or low bytes.
+Mas expand this for manipulating low/high bytes or words:</tt>
+<p><tt>&nbsp; .lo8 - lower 8 bits&nbsp;</tt>
+<br><tt>&nbsp; .hi8 - high 8 bits</tt>
+<br><tt>&nbsp; .lo16 - lower 16 bits</tt>
+<br><tt>&nbsp; .hi16 - high 16 bits:</tt>
+<p><tt>Operators .isdef and .isndef return 1 or 0 if name is declared/not-declared:</tt>
+<pre><b><tt>&nbsp; Data1 = 123
+
+&nbsp; Data2 = .isdef Data1 ; Data2 = 1
+
+&nbsp; Data3 = .isndef Data4 ; Data3 = 1</tt></b></pre>
+<tt>(abbreviation form 'is-defined' and 'is-not-defined').</tt>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<center><table COLS=3 WIDTH="300" >
+<tr>
+<td ALIGN=CENTER>
+<center><tt>operator</tt></center>
+</td>
+
+<td ALIGN=CENTER>
+<center><tt>form</tt></center>
+</td>
+
+<td ALIGN=CENTER>
+<center><tt>precedense</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>()</tt></center>
+</td>
+
+<td>
+<center><tt>grouping</tt></center>
+</td>
+
+<td>
+<center><tt>0</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>-</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>+</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>~</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>!</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.lo8</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.hi8</tt></center>
+</td>
+
+<td ALIGN=CENTER>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.lo16</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.hi16</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.isdef</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.isndef</tt></center>
+</td>
+
+<td>
+<center><tt>unary</tt></center>
+</td>
+
+<td>
+<center><tt>1</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>*</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>2</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>/</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>2</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>%</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>2</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>+</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>3</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>-</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>3</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>&amp;</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>4</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>|</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>4</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>&lt;&lt;</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>4</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>>></tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>4</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.ror</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>4</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>.rol</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>4</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>&lt;</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>5</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>&lt;=</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>5</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>></tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>5</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>>=</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>5</tt></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center><tt>!=</tt></center>
+</td>
+
+<td>
+<center><tt>binary</tt></center>
+</td>
+
+<td>
+<center><tt>5</tt></center>
+</td>
+</tr>
+</table></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td BGCOLOR="#66FFFF">
+<center><b><tt><a href="mas4-1.html">[PREV]</a><a href="index.htm">[INDEX]</a><a href="mas4-3.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>

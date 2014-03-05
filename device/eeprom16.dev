@@ -1,0 +1,30 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  eeprom16.dev
+;
+;  Mas's device file for '16Bit EEPROM device'
+;  Copyright (C) 2004 Pasalic Zaharije
+;
+;  This files comes with ABSOLUTELY NO WARRANTY;
+;  for more details about device files and/or
+;  Lisense see documentation.
+;
+;                        Last Revision: 25-09-2004
+;                        Revision by  : Even S. F.     
+
+device = EEPROM16
+core = 16
+memory = 0xFFFF
+inst = 1
+
+
+decl = (
+     opcode = 0
+     param = (
+           size = 16
+           position = 0
+           error = <16bit number expected>
+     )
+)
+
+

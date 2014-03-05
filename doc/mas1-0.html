@@ -1,0 +1,376 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="tito">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Untitled</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#800080" alink="#0000FF">
+&nbsp;
+<table COLS=3 WIDTH="100%" >
+<tr>
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td WIDTH="100%" BGCOLOR="#3333FF">
+<center><b><tt><font color="#FFFFFF">1. WHAT IS MAS-PIC</font></tt></b></center>
+</td>
+
+<td WIDTH="3" BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td><tt>Mas is generic assembler for PICxxx family of microcontrollers
+that can generate code for more than 90 different icrocontrollers.</tt>
+<p><tt>Copyright (C) 2004, Pasalic Zaharije</tt>
+<p><tt>This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or any later
+version.</tt>
+<p><tt>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE. See <a href="mas15-0.html">10. GNU
+General Public License</a> for more details.</tt>
+<p><tt>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 59 Temple Place Suite 330, Boston, MA 02111-1307, USA.</tt>
+<p><tt>Mas is 2 pass assembler for <i>Microship's</i> (*) PICxxx family
+of microcontrollers. Futures:</tt>
+<br>&nbsp;
+<ul>
+<li>
+<tt>about 90 microcont. and eeprom8/16 supported</tt></li>
+
+<li>
+<tt>2 pass assembly</tt></li>
+
+<li>
+<tt>conditional assembly</tt></li>
+
+<li>
+<tt>simple, but powerful macros</tt></li>
+
+<li>
+<tt>different file formats for output</tt></li>
+
+<li>
+<tt>easy configuration for another PICxxx families (generic assembler devices)</tt></li>
+
+<li>
+<tt>compilation speed</tt></li>
+
+<li>
+<tt>standard include files that can save some time while programming</tt></li>
+
+<li>
+<tt>highly portable across platforms that supports C++</tt></li>
+
+<li>
+<tt>GPLed license :)</tt></li>
+</ul>
+<tt><i>Microchip</i> is trademark of <i>Microchip, Inc</i>.</tt>
+<br>&nbsp;
+<p><tt>Mas can be expanded to produce code for another PICxxx microprocessors
+with tiny scripts (<a href="mas9-0.html">See '9. Device description files'</a>).
+This release have support for following PICxxx microcontrollers:</tt>
+<p><i><tt>Family - PIC10xxx</tt></i>
+<ul>
+<li>
+<tt>10F200</tt></li>
+
+<li>
+<tt>10F202</tt></li>
+
+<li>
+<tt>10F204</tt></li>
+
+<li>
+<tt>10F206</tt></li>
+</ul>
+<i><tt>Familiy - PIC12xxx</tt></i>
+<ul>
+<li>
+<tt>12C508</tt></li>
+
+<li>
+<tt>12C672</tt></li>
+
+<li>
+<tt>12C508A</tt></li>
+
+<li>
+<tt>12CE518</tt></li>
+
+<li>
+<tt>12C509</tt></li>
+
+<li>
+<tt>12CE519</tt></li>
+
+<li>
+<tt>12C509A</tt></li>
+
+<li>
+<tt>12CE673</tt></li>
+
+<li>
+<tt>12C671</tt></li>
+
+<li>
+<tt>12CE674</tt></li>
+</ul>
+<i><tt>Family - PIC16xxx</tt></i>
+<ul>
+<li>
+<tt>16C432</tt></li>
+
+<li>
+<tt>16C57</tt></li>
+
+<li>
+<tt>16C62A</tt></li>
+
+<li>
+<tt>16C66&nbsp;</tt></li>
+
+<li>
+<tt>16C73A</tt></li>
+
+<li>
+<tt>16CE623</tt></li>
+
+<li>
+<tt>16F83</tt></li>
+
+<li>
+<tt>16C505&nbsp;</tt></li>
+
+<li>
+<tt>16C57C</tt></li>
+
+<li>
+<tt>16C62B</tt></li>
+
+<li>
+<tt>16C662</tt></li>
+
+<li>
+<tt>16C73B&nbsp;</tt></li>
+
+<li>
+<tt>16CE624</tt></li>
+
+<li>
+<tt>16F84</tt></li>
+
+<li>
+<tt>16C554</tt></li>
+
+<li>
+<tt>16C58A&nbsp;</tt></li>
+
+<li>
+<tt>16C63</tt></li>
+
+<li>
+<tt>16C67</tt></li>
+
+<li>
+<tt>16C74</tt></li>
+
+<li>
+<tt>16CE625</tt></li>
+
+<li>
+<tt>16C558</tt></li>
+
+<li>
+<tt>16C58B</tt></li>
+
+<li>
+<tt>16C63A</tt></li>
+
+<li>
+<tt>16C71&nbsp;</tt></li>
+
+<li>
+<tt>16C74A</tt></li>
+
+<li>
+<tt>16CR62</tt></li>
+
+<li>
+<tt>16C558A</tt></li>
+
+<li>
+<tt>16C620&nbsp;</tt></li>
+
+<li>
+<tt>16C64</tt></li>
+
+<li>
+<tt>16C710</tt></li>
+
+<li>
+<tt>16C74B</tt></li>
+
+<li>
+<tt>16CR63</tt></li>
+
+<li>
+<tt>16C54</tt></li>
+
+<li>
+<tt>16C620A</tt></li>
+
+<li>
+<tt>16C642</tt></li>
+
+<li>
+<tt>16C711&nbsp;</tt></li>
+
+<li>
+<tt>16C76</tt></li>
+
+<li>
+<tt>16CR64</tt></li>
+
+<li>
+<tt>16C54A</tt></li>
+
+<li>
+<tt>16C621&nbsp;</tt></li>
+
+<li>
+<tt>16C64A</tt></li>
+
+<li>
+<tt>16C715</tt></li>
+
+<li>
+<tt>16C77</tt></li>
+
+<li>
+<tt>16CR65</tt></li>
+
+<li>
+<tt>16C55</tt></li>
+
+<li>
+<tt>16C621A</tt></li>
+
+<li>
+<tt>16C65</tt></li>
+
+<li>
+<tt>16C72&nbsp;</tt></li>
+
+<li>
+<tt>16C84</tt></li>
+
+<li>
+<tt>16CR72</tt></li>
+
+<li>
+<tt>16C56</tt></li>
+
+<li>
+<tt>16C622&nbsp;</tt></li>
+
+<li>
+<tt>16C65A</tt></li>
+
+<li>
+<tt>16C72A</tt></li>
+
+<li>
+<tt>16C923</tt></li>
+
+<li>
+<tt>16CR83</tt></li>
+
+<li>
+<tt>16C56A</tt></li>
+
+<li>
+<tt>16C622A</tt></li>
+
+<li>
+<tt>16C65B</tt></li>
+
+<li>
+<tt>16C73&nbsp;</tt></li>
+
+<li>
+<tt>16C924&nbsp;</tt></li>
+
+<li>
+<tt>16CR84</tt></li>
+</ul>
+<i><tt>Family - PIC17xxx</tt></i>
+<ul>
+<li>
+<tt>17C42</tt></li>
+
+<li>
+<tt>17C752</tt></li>
+
+<li>
+<tt>17C766</tt></li>
+
+<li>
+<tt>17C42A&nbsp;</tt></li>
+
+<li>
+<tt>17C756</tt></li>
+
+<li>
+<tt>17CR42</tt></li>
+
+<li>
+<tt>17C43</tt></li>
+
+<li>
+<tt>17C756A&nbsp;</tt></li>
+
+<li>
+<tt>17CR43</tt></li>
+
+<li>
+<tt>17C44</tt></li>
+
+<li>
+<tt>17C762</tt></li>
+</ul>
+<i><tt>Misc</tt></i>
+<ul>
+<li>
+<tt>P14000</tt></li>
+
+<li>
+<tt>EEPROM8&nbsp; (8bit eeprom)</tt></li>
+
+<li>
+<tt>EEPROM16 (16bit eeprom)</tt></li>
+</ul>
+<tt>In all mas can generate code for exactly 90 different devices from
+PICxxx family of microcontrollers.</tt></td>
+
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+
+<td VALIGN=TOP BGCOLOR="#66FFFF">
+<center><b><tt><a href="index.htm">[PREV][INDEX]</a><a href="mas2_0.html">[NEXT]</a></tt></b></center>
+</td>
+
+<td BGCOLOR="#66FFFF"><img SRC="../images/dot.gif" NOSAVE height=1 width=1></td>
+</tr>
+</table>
+
+</body>
+</html>
